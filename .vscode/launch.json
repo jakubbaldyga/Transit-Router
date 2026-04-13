@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/Debug/lab1.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "cmake build",
+      "environment": [],
+      "externalConsole": true
+    },
+    {
+      "name": "Tests",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/src/tests/tests.exe",
+      "args": [],
+      "stopAtEntry": true,
+      "preLaunchTask": "run tests",
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true
+    },
+    {
+      "name": "Benchmark",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/Release/benchmarks.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "cmake build release",
+      "environment": [],
+      "externalConsole": true
+    }
+  ]
+}

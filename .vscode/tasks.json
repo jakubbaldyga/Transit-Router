@@ -1,0 +1,69 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cmake configure",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build.bat",
+            "args": [
+                "-" // left empty to run default configuration
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "run linter",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build.bat",
+            "args": [
+                "lint"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "run tests",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build.bat",
+            "args": [
+                "tests",
+                "Debug"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "run benchmark",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build.bat",
+            "args": [
+                "benchmarks",
+                "Release"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "run cli",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build.bat",
+            "args": [
+                "cli",
+                "Debug"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "run gui",
+            "type": "shell",
+            "command": "${workspaceFolder}\\build.bat",
+            "args": [
+                "gui",
+                "Debug"
+            ],
+            "problemMatcher": [],
+            "group": "build"
+        }
+    ]
+}

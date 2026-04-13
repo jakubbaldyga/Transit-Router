@@ -1,0 +1,48 @@
+cmake_minimum_required(VERSION 3.20)
+
+project(MyMapApp)
+set(FETCHCONTENT_FULLY_DISCONNECTED OFF)
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+
+option(BUILD_CLI "Build CLI target" OFF)
+option(BUILD_GUI "Build GUI target" OFF)
+option(BUILD_TESTS "Build Tests target" OFF)
+option(BUILD_BENCHMARK "Build Benchmark target" OFF)
+option(BUILD_ALL "Build all targets" OFF)
+
+if(BUILD_ALL)
+    set(BUILD_CLI ON)
+    set(BUILD_GUI ON)
+    set(BUILD_TESTS ON)
+    set(BUILD_BENCHMARK ON)
+endif()
+
+add_subdirectory(src/core)
+
+function(copy_core_dll target)
+    add_custom_command(TARGET ${target} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_FILE:core>
+        $<TARGET_FILE_DIR:${target}>)
+
+    message(STATUS "Copy core DLL to ${target}")
+endfunction()
+
+if(BUILD_CLI)
+    add_subdirectory(src/cli)
+endif()
+
+if(BUILD_GUI)
+    add_subdirectory(src/gui)
+endif()
+
+if(BUILD_TESTS)
+    add_subdirectory(src/tests)
+endif()
+
+if(BUILD_BENCHMARK)
+    add_subdirectory(src/benchmark)
+endif()
